@@ -35,11 +35,11 @@ jobs:
 
         steps:
             - uses: actions/checkout@v4
-            
+
             - name: Deploy Staging on Azure App Service
               run: |
                 echo "Deploying staging to Azure App Service..."
-            
+
 
     # ── Job 3 : Production ────────────────────────────────────────────
     production:
