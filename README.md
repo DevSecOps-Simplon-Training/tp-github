@@ -543,6 +543,11 @@ C'est l'exercice le plus important de l'étape.
 
 1. **Introduisez une erreur de style** dans `ressources/app.py` : ajoutez une ligne avec des espaces superflus en fin de ligne ou une ligne trop longue (> 100 caractères). Commitez et pushez.
 2. **Observez** : quel job échoue ? Que dit le message d'erreur dans les logs ?
+
+Run flake8 ressources/ --config ressources/.flake8
+ressources/app.py:18:101: E501 line too long (123 > 100 characters)
+Error: Process completed with exit code 1.
+
 3. **Corrigez** l'erreur, pushez à nouveau.
 4. **Introduisez une erreur dans un test** : modifiez `test_app.py` pour qu'un assert soit faux (ex : `assert data["info"] == 999`). Commitez et pushez.
 5. **Observez** : cette fois quel job échoue ?
