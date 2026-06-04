@@ -1,35 +1,44 @@
-name: CI
+name: CI — NexaCloud API
 
 on:
   push:
-    branches: ["main"]
+    branches: [main]
   pull_request:
-    branches: ["main"]
+    branches: [main]
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Example step
-        run: echo "Add your build/test steps here!"
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
-        run: pip install -r ressources/requirements.txt
-
-      - name: Run tests
-        run: pytest ressources/ -v
-
-      - name: Install flake8
+      - name: Installer flake8
         run: pip install flake8
 
-      - name: Lint with flake8
+      - name: Lint avec flake8
         run: flake8 ressources/ --config ressources/.flake8
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installer les dépendances
+        run: pip install -r ressources/requirements.txt
+
+      - name: Lancer les tests
+        run: pytest ressources/ -v
