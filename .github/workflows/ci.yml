@@ -24,3 +24,21 @@ jobs:
 
       - name: Lancer les tests
         run: pytest ressources/ -v
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installer flake8
+        run: pip install flake8
+
+      - name: Lint avec flake8
+        run: flake8 ressources/ --config ressources/.flake8
