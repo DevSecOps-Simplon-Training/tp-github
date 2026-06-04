@@ -22,3 +22,6 @@ jobs:
 
       - name: Lister les fichiers du repo
         run: ls -la
+
+      - name: Tous les jours c'est aujourd'hui
+        run: date
