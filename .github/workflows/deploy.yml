@@ -2,21 +2,21 @@ name: Deploy
 
 on:
     workflow_dispatch:
+        inputs:
+            environment:
+                description: "Choose the deployment environment"
+                required: true
+                default: "staging"
+                type: choice
+                options:
+                    - staging
+                    - production
 
 jobs:
-    deploy-staging:
+    deploy:
         runs-on: ubuntu-latest
-        environment: staging # utilise l'environnement staging
+        environment: ${{ inputs.environment }}
 
         steps:
-            - name: Déployer en staging
-              run: echo "Déploiement en staging..."
-
-    deploy-production:
-        runs-on: ubuntu-latest
-        environment: production # TODO: ajouter la dépendance sur deploy-staging
-        needs: deploy-staging
-
-        steps:
-            - name: Déployer en production
-              run: echo "Déploiement en production !"
+            - name: "Déployer en ${{ inputs.environment }}"
+              run: echo "Déploiement en ${{ inputs.environment }}..."
