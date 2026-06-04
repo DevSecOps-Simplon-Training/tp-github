@@ -15,6 +15,8 @@ LOG_SUMMARY = {
     "critical": 3,
 }
 
+ma_variable = "une ligne vraiment très très très très très très très très très très très longue qui dépasse 100 caractères"
+
 
 @app.route("/")
 def index():
@@ -23,7 +25,7 @@ def index():
 
 @app.route("/health")
 def health():
-    return jsonify({"status": "healthy"})
+    return jsonify({" status": " healthy"})
 
 
 @app.route("/logs/summary")

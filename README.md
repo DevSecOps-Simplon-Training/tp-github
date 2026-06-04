@@ -198,10 +198,19 @@ Ouvrez le fichier `.github/workflows/ci.yml` déjà présent dans ce repo.
 Répondez aux questions suivantes **sans modifier le fichier** :
 
 1. Sur quelle(s) branche(s) ce workflow se déclenche-t-il ?
+# sur la branch main 
+
 2. Combien de jobs contient-il ?
+
+# un job 
 3. Sur quel système d'exploitation tourne-t-il ?
+
+# Ubuntu 
 4. Quelle action installe Python ?
+
+# requirements.txt
 5. Quelle commande lance les tests ?
+# runs on 
 
 Vérifiez vos réponses en allant dans l'onglet **Actions** de votre repo GitHub après votre premier push.
 
