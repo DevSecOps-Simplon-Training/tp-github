@@ -21,3 +21,38 @@ jobs:
         run: pip install -r ressources/requirements.txt
       - name: Launch tests
         run: pytest ressources/ -v
+      # Ajouter la couverture de tests
+      - name: Tests avec couverture
+        run: pytest ressources/ -v --cov=ressources --cov-report=term-missing
+      # Uploader le rapport de couverture comme artefact téléchargeable
+      - name: Générer le rapport HTML
+        run: pytest ressources/ --cov=ressources --cov-report=html
+      - name: Upload du rapport
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapport-couverture
+          path: htmlcov/
+      # Mettre en cache les dépendances pip (accélère les builds suivants)
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('ressources/requirements.txt') }}
+  
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installer flake8
+        run: pip install flake8
+
+      - name: Lint with flake8
+        run: flake8 ressources/ --config ressources/.flake8
