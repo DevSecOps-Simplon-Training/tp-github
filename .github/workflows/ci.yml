@@ -14,11 +14,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # TODO: ajouter un step "Setup Python" avec actions/setup-python@v5
-      # version : "3.11"
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
-      # TODO: ajouter un step "Installer les dépendances"
-      # commande : pip install -r ressources/requirements.txt
+      - name: Installer les dépendances
+        run: pip install -r ressources/requirements.txt
 
-      # TODO: ajouter un step "Lancer les tests"
-      # commande : pytest ressources/ -v
+      - name: Lancer les tests
+        run: pytest ressources/ -v
