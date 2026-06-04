@@ -25,6 +25,12 @@ jobs:
       - name: Lancer les tests
         run: pytest ressources/ -v
 
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('ressources/requirements.txt') }}
+
   lint:
     runs-on: ubuntu-latest
 
