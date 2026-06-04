@@ -3,7 +3,7 @@ name: Hello NexaCloud
 on:
   push:
     branches: [main]
-  workflow_dispatch:       # permet de déclencher manuellement depuis l'interface GitHub
+  workflow_dispatch:
 
 jobs:
   salutation:
@@ -20,8 +20,8 @@ jobs:
           echo "Commit  : ${{ github.sha }}"
           echo "Acteur  : ${{ github.actor }}"
 
-      - name: Date
-        run: date
-
       - name: Lister les fichiers du repo
         run: ls -la
+
+      - name: Date et heure du runner
+        run: date

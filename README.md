@@ -86,7 +86,7 @@ Dans VS Code, vous pouvez aussi faire `Ctrl+Shift+P` → taper `Git: Open Settin
 
 ### Étape E — Installer les dépendances et vérifier l'environnement
 
-Ouvrez un **terminal intégré** dans VS Code : menu **Terminal → New Terminal** (olsu `` Ctrl+` ``).
+Ouvrez un **terminal intégré** dans VS Code : menu **Terminal → New Terminal** (ou `` Ctrl+` ``).
 
 ```bash
 # Vérifier que vous êtes bien dans le bon dossier
