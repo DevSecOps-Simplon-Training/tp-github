@@ -551,6 +551,22 @@ Error: Process completed with exit code 1.
 3. **Corrigez** l'erreur, pushez à nouveau.
 4. **Introduisez une erreur dans un test** : modifiez `test_app.py` pour qu'un assert soit faux (ex : `assert data["info"] == 999`). Commitez et pushez.
 5. **Observez** : cette fois quel job échoue ?
+
+client = <FlaskClient <Flask 'app'>>
+
+    def test_index_status(client):
+        """La route / retourne 200 avec le statut ok."""
+        response = client.get("/")
+        assert response.status_code == 200
+        data = response.get_json()
+>       assert data["info"] == 999
+E       KeyError: 'info'
+
+ressources/test_app.py:21: KeyError
+=========================== short test summary info ============================
+FAILED ressources/test_app.py::test_index_status - KeyError: 'info'
+========================= 1 failed, 4 passed in 0.13s ==========================
+
 6. **Corrigez** et vérifiez que la CI repasse au vert.
 
 > 💡 Le but n'est pas de ne jamais casser la CI — c'est de savoir lire les logs et corriger rapidement. Cette compétence s'acquiert en cassant volontairement.
