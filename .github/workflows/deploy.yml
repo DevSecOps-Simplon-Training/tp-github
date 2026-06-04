@@ -4,13 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       mon_input:
-        description: "Description affichée dans l'UI"
+        description: "Choix de l'environnement de déploiement"
         required: true
-        default: "valeur_par_défaut"
+        default: "deploy-staging"
         type: choice
         options:
-          - choix_1
-          - choix_2
+          - staging
+          - production
 
 jobs:
   deploy-staging:
