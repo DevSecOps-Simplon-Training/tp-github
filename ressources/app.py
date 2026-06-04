@@ -16,7 +16,7 @@ LOG_SUMMARY = {
 }
 
 
-@app.route("/")
+@app.route("/")                                  
 def index():
     return jsonify({"status": "ok", "service": "NexaCloud API", "version": "1.1.0"})
 
