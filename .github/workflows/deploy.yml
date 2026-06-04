@@ -2,6 +2,15 @@ name: Deploy
 
 on:
   workflow_dispatch:
+    inputs:
+      mon_input:
+        description: "Description affichée dans l'UI"
+        required: true
+        default: "valeur_par_défaut"
+        type: choice
+        options:
+          - choix_1
+          - choix_2
 
 jobs:
   deploy-staging:
