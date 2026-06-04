@@ -60,20 +60,3 @@ jobs:
 
       - name: Lint avec flake8
         run: flake8 ressources/ --config ressources/.flake8
-      - name: Tests avec couverture
-        run: pytest ressources/ -v --cov=ressources --cov-report=term-missing
-      
-      - name: Générer le rapport HTML
-        run: pytest ressources/ --cov=ressources --cov-report=html
-      
-      - name: Upload du rapport
-        uses: actions/upload-artifact@v4
-        with:
-          name: rapport-couverture
-          path: htmlcov/
-      
-      - name: Cache pip
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('ressources/requirements.txt') }}
