@@ -50,6 +50,13 @@ jobs:
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_STAGING }}
           package: ressources/
 
+        # Smoke test post-déploiement : vérifier que l'app répond avant de valider
+      - name: Smoke test post-déploiement
+        run: |
+            sleep 30   # attendre que l'app démarre
+            curl --fail https://ten-nexacloud-api-staging-27050.azurewebsites.net/health || exit 1
+# Si ce test échoue, le job échoue → on peut déclencher un rollback
+
   # ── Job 3 : Production ────────────────────────────────────────────
   production:
     runs-on: ubuntu-latest
@@ -73,3 +80,9 @@ jobs:
           app-name: "ten-nexacloud-api-production-29408"
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_PRODUCTION }}
           package: ressources/
+
+        # Smoke test post-déploiement : vérifier que l'app répond avant de valider
+      - name: Smoke test post-déploiement
+        run: |
+            sleep 30   # attendre que l'app démarre
+            curl --fail https://https://ten-nexacloud-api-production-29408.azurewebsites.net/health || exit 1
