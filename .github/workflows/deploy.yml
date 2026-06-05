@@ -2,52 +2,21 @@ name: Deploy
 
 on:
   workflow_dispatch:
-    inputs:
-      environment:
-        description: "Environnement cible"
-        required: true
-        default: "staging"
-        type: choice
-        options:
-          - staging
-          - production
 
 jobs:
-  deploy:
+  deploy-staging:
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}   # bloqué si production nécessite une approbation
+    environment: staging          # utilise l'environnement staging
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Déployer en staging
+        run: echo "Déploiement en staging..."
 
-      - name: Déployer sur ${{ inputs.environment }}
-        run: |
-          if [ "${{ inputs.environment }}" = "production" ]; then
-            echo "🚀 Déploiement en PRODUCTION"
-            echo "URL : https://nexacloud.example.com"
-          else
-            echo "✅ Déploiement en STAGING"
-            echo "URL : https://staging.nexacloud.example.com"
-          fi
-jobs:
-  build:
+  deploy-production:
     runs-on: ubuntu-latest
-    env:
-      APP_ENV: production
-      API_URL: ${{ vars.API_URL }}        # variable non sensible
-      API_KEY: ${{ secrets.API_KEY }}     # secret chiffré
+    environment: production       # TODO: ajouter la dépendance sur deploy-staging
+    needs: deploy-staging
 
-# Partager des outputs entre jobs
-jobs:
-  build:
-    outputs:
-      version: ${{ steps.version.outputs.tag }}
     steps:
-      - id: version
-        run: echo "tag=1.2.3" >> $GITHUB_OUTPUT
-
-  deploy:
-    needs: build
-    steps:
-      - run: echo "Déploiement de la version ${{ needs.build.outputs.version }}"          
+      - name: Déployer en production
+        run: echo "Déploiement en production !"
