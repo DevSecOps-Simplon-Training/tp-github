@@ -1,27 +1,27 @@
 name: Hello NexaCloud
 
 on:
-    push:
-        branches: [main]
-    workflow_dispatch: # permet de déclencher manuellement depuis l'interface GitHub
+  push:
+    branches: [main]
+  workflow_dispatch: # permet de déclencher manuellement depuis l'interface GitHub
 
 jobs:
-    salutation:
-        runs-on: ubuntu-latest
+  salutation:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout du code
-              uses: actions/checkout@v4
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v4
 
-            - name: Informations sur l'environnement
-              run: |
-                  echo "Repo    : ${{ github.repository }}"
-                  echo "Branche : ${{ github.ref_name }}"
-                  echo "Commit  : ${{ github.sha }}"
-                  echo "Acteur  : ${{ github.actor }}"
+      - name: Informations sur l'environnement
+        run: |
+          echo "Repo    : ${{ github.repository }}"
+          echo "Branche : ${{ github.ref_name }}"
+          echo "Commit  : ${{ github.sha }}"
+          echo "Acteur  : ${{ github.actor }}"
 
-            - name: Lister les fichiers du repo
-              run: ls -la
+      - name: Lister les fichiers du repo
+        run: ls -la
 
-            - name: Afficher la date et l'heure
-              run: date
+      - name: Afficher la date et l'heure
+        run: date
