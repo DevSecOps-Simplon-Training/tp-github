@@ -30,3 +30,4 @@ jobs:
             echo "✅ Déploiement en STAGING"
             echo "URL : https://staging.nexacloud.example.com"
           fi
+          echo "Déploiement terminé !"
