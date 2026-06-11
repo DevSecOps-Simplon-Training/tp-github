@@ -3,7 +3,6 @@
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
 name: CI/CD — NexaCloud API
-
 on:
   push:
     branches: [main]
@@ -49,7 +48,7 @@ jobs:
       - name: Déployer sur Azure App Service (staging)
         uses: azure/webapps-deploy@v3
         with:
-          app-name: "nexacloud-api-staging"
+          app-name: "mohamed-saidi-api-16190"
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ressources/
 
@@ -72,6 +71,6 @@ jobs:
       - name: Déployer sur Azure App Service (production)
         uses: azure/webapps-deploy@v3
         with:
-          app-name: "nexacloud-api"
+          app-name: "mohamed-saidi-api-16190"
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ressources/
