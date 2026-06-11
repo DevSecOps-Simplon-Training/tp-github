@@ -50,7 +50,7 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: "nexacloud-api-staging"
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_805CD166C797428D8178BDB7B9F37E15 }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ressources/
 
   production:
@@ -73,5 +73,5 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: "nexacloud-api"
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_805CD166C797428D8178BDB7B9F37E15 }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ressources/
