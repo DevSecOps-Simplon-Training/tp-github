@@ -15,7 +15,7 @@ jobs:
         run: |
           echo "✅ Déploiement en staging réussi"
           echo "URL : https://staging.nexacloud.example.com"
-
+    
   deploy-production:
     runs-on: ubuntu-latest
     environment: production       
