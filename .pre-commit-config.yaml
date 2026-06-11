@@ -1,14 +1,14 @@
 # .pre-commit-config.yaml — version complète
 repos:
   - repo: https://github.com/pycqa/flake8
-    rev: 7.0.0
+    rev: 7.3.0
     hooks:
       - id: flake8
         args: [--config, ressources/.flake8]
         files: ressources/.*\.py$
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v6.0.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -18,7 +18,7 @@ repos:
         args: [--maxkb=500]
 
   - repo: https://github.com/pycqa/isort
-    rev: 5.13.2
+    rev: 9.0.0a3
     hooks:
       - id: isort                    # trie automatiquement les imports Python
         files: ressources/.*\.py$
